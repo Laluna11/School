@@ -1,0 +1,59 @@
+﻿@page "{handler?}/{Id?}"
+@model Student_Courses.Pages.AllStudentsModel
+@{
+}
+
+
+
+
+<table class="table">
+
+    <tr>
+        <th>name</th>
+        <th>gender</th>
+        <th>Age</th>
+        <th>email</th>
+        <th>Nationality</th>
+        <th>Courses</th>
+        <th>Action</th>
+       
+    </tr>
+    
+        @foreach (var User in Model.students)
+        {
+            <tr>
+        
+        
+                <td>@User.StudentName</td>
+                <td>@User.Gender</td>
+                <td>@User.Age</td>
+                <td>@User.Email</td>
+                <td>@User.Nationality.Name</td>
+                <td>
+                    @foreach (var item in @User.Courses)
+                    {
+                           <span>@item.Name <br /></span>
+                    }
+                </td>
+
+                <td><a asp-page="/AllStudents" asp-page-handler="Delete" asp-route-Id="@User.StudentId">Delete</a></td>
+                <td><a asp-page="/Update" asp-route-Id="@User.StudentId" >Edit</a></td>
+
+                
+                @*<td>
+                    <form method="post" asp-page-handler="Zizi" asp-route-Id="@User.StudentId">
+
+                        <button type="submit">Delete</button>
+
+
+                    </form>
+                </td>*@
+        
+            </tr>
+        }
+
+
+</table>
+
+            
+          

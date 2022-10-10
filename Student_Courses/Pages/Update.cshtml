@@ -1,0 +1,68 @@
+﻿@page "{Id}"
+@model Student_Courses.Pages.UpdateModel
+@{
+}
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Student.StudentName"></label>
+        <input class="form-control" asp-for="@Model.Student.StudentName"  value="@Model.st.StudentName"/>
+        <span asp-validation-for="@Model.Student.StudentName"></span>
+    </div>
+
+
+
+    <div class="form-group">
+        <label  asp-for="@Model.Student.Age"></label>
+        <input class="form-control" asp-for="@Model.Student.Age" value="@Model.st.Age" />
+        <span asp-validation-for="@Model.Student.Age"></span>
+    </div>
+
+
+
+    <div class="form-group">
+        <label  asp-for="@Model.Student.Email"></label>
+        <input class="form-control" asp-for="@Model.Student.Email" value="@Model.st.Email" />
+        <span asp-validation-for="@Model.Student.Email"></span>
+    </div>
+
+
+
+    <div class="form-group">
+        <label  asp-for="@Model.Student.Gender"></label>
+      
+        @if(Model.st.Gender == "male")
+        {  
+             <label>male: </label>
+             <input  type="radio" asp-for="Student.Gender" value="male" checked />
+             <label>female: </label>
+            <input  type="radio" asp-for="Student.Gender" value="female"/>
+        }
+        else
+        {
+           
+            <label>male: </label>
+            <input  type="radio" asp-for="Student.Gender" value="male"  />
+            <label>female: </label>
+            <input  type="radio" asp-for="Student.Gender" value="female" checked />
+                
+          
+            
+        }
+
+
+        
+    </div>
+
+    <div class="form-group">
+       
+        <select class="form-control" asp-items="@Model.Courses" asp-for="@Model.Student.CourseIds" multiple></select>
+    </div>
+
+     <div class="form-group">
+
+        <select class="form-control" asp-items="@Model.Nationality" asp-for="@Model.Student.Nationality" ></select>
+    </div>
+
+
+    <button class="btn btn-primary">Create</button>
+</form>
